@@ -1,0 +1,23 @@
+\usepackage{xcolor}
+
+\definecolor{mdHeading}{RGB}{0, 102, 204}
+\definecolor{mdItalic}{RGB}{153, 0, 153}
+\definecolor{mdBold}{RGB}{204, 0, 0}
+\definecolor{mdCode}{RGB}{0, 153, 0}
+\definecolor{mdLink}{RGB}{0, 102, 102}
+
+\lstdefinelanguage{Markdown}{
+    morekeywords={[1]\#,\#\#,\#\#\#,\#\#\#\#,\#\#\#\#\#},
+    morekeywords={[2]*,_},
+    morekeywords={[3]```},
+    morekeywords={[4][,],(,)},
+    morekeywords={[5]!},
+    moredelim=[s][\color{mdBold}]{**}{**},
+    moredelim=[s][\color{mdItalic}]{*}{*},
+    moredelim=[s][\color{mdItalic}]{_}{_},
+    moredelim=[s][\color{mdCode}]{`}{`},
+    moredelim=[s][\color{mdHeading}]{\#}{\ },
+    moredelim=[s][\color{mdLink}]{[}{]},
+    moredelim=[s][\color{mdLink}]{(}{)},
+    sensitive=true
+}

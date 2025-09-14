@@ -1,0 +1,67 @@
+\documentclass[14pt,a4paper,oneside]{extreport}
+
+\usepackage{./res/style}
+
+\usepackage{lipsum} % FIXME: Generating text for example. Delete
+
+% load listings languages
+\input{./lstlanguages/markdown-lang.tex}
+\input{./lstlanguages/yaml-lang.tex}
+
+\graphicspath{{./img/}} % path to graphics
+\addbibresource{bibliography.bib}
+\loadglsentries{abbreviations.gls}
+\makenoidxglossaries
+
+\author{Ivanov Ivan Ivanov}
+\date{\today}
+
+\begin{document}
+\renewcommand{\figurename}{Рисунок}
+\renewcommand{\contentsname}{Содержание}
+\renewcommand{\bibname}{Список используемых источников}
+
+%\includepdf[pages=-]{./titles/TITLE}  % indlude pdf title
+\include{./titles/title}
+
+\include{./chapters/annotation.tex}
+
+%\begin{spacing}{1.2}
+\tableofcontents
+%\end{spacing}
+
+% Print glossaries
+\glsaddall
+\printnoidxglossary[
+	style=glsstyle,
+	title={Список используемых сокращений},
+	nogroupskip,
+	nonumberlist,
+	nopostdot,
+	sort=use
+]
+%\include{./chapters/acronyms.tex} % Alternative for printnoidxglossary
+
+\include{./chapters/introduction.tex}
+\include{./chapters/research.tex}
+\include{./chapters/design.tex}
+\include{./chapters/technological.tex}
+\include{./chapters/economic.tex}
+\include{./chapters/conclusion.tex}
+\include{./chapters/conclusion_en.tex}
+
+%\nocite{*}  % to write all sources
+\printbibliography[heading=bibintoc]
+
+\label{lastpage}
+
+\appendix
+
+\appendixitem{Техническое задание}
+\appendixitem{Акт о внедрении}
+
+\include{./chapters/appendices/tech_specification.tex}
+\include{./chapters/appendices/implementation.tex}
+
+\end{document}
+

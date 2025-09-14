@@ -1,0 +1,433 @@
+\ProvidesPackage{style}
+
+\usepackage{cmap} % for pdfLaTeX
+\usepackage[T1,T2A]{fontenc} % correct encoding for pdfLaTeX
+\usepackage[utf8]{inputenc} % correct encoding source file
+\usepackage[english,russian]{babel} % correct language
+
+% ----------------------------------------------------------------------------
+% TEXT SETTINGS
+% ----------------------------------------------------------------------------
+
+\usepackage{fontspec} % use standart fonts (only for xelatex!!!)
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont[Scale=0.85]{Courier New}
+
+\usepackage[none]{hyphenat} % no word breaks
+
+\usepackage{setspace}
+%\singlespacing % 1.0
+\onehalfspacing % 1.5
+
+% ----------------------------------------------------------------------------
+% PAGE SETTINGS
+% ----------------------------------------------------------------------------
+
+\usepackage[left=3cm, right=1cm, vmargin=2cm, headheight=2cm]{geometry}
+\linespread{1.5} % line spacing 1.5
+\usepackage{indentfirst} % indent first paragraph
+\setlength{\parindent}{1.25cm} % left indent 1.25 cm
+\sloppy
+
+\frenchspacing % ???
+
+\usepackage{fancyhdr} % for headers and footers
+\pagestyle{plain}
+
+% Ban dangling lines (ban single lines on a page)
+\clubpenalty=10000
+\widowpenalty=10000
+
+% ----------------------------------------------------------------------------
+% TOOL PACKAGE
+% ----------------------------------------------------------------------------
+
+\usepackage{etoolbox}
+\usepackage{textcase}
+
+\usepackage{color}
+
+\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
+
+% ----------------------------------------------------------------------------
+% COUNTERS SETTINGS
+% ----------------------------------------------------------------------------
+
+\usepackage[figure,table,xspace]{totalcount}
+% add
+% \totalfigures
+% \totaltables
+% \listoffigures - list of figures
+
+% ----------------------------------------------------------------------------
+% ATTACHMENTS SETTINGS
+% ----------------------------------------------------------------------------
+
+\usepackage[labelsep=endash]{caption}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
+
+\captionsetup[figure]{
+	position=bottom,
+    font={small}, % 12pt
+    labelfont={normalfont},
+    textfont={normalfont},
+    justification=centering, % Center alignment
+    singlelinecheck=true, % Centering even for one-line captions
+    skip=0pt, % Spacing between the caption and figure
+	%belowskip=-20pt,
+	%aboveskip=0pt,
+}
+%\setlength{\textfloatsep}{0pt}
+%\setlength{\floatsep}{0pt}
+%\setlength{\intextsep}{0pt}
+
+\captionsetup[table]{
+	position=top,
+    font={normalsize},
+    labelfont={it},
+    textfont={it},
+    justification=raggedright,
+    singlelinecheck=false,
+    skip=0pt,
+	%belowskip=-20pt,
+}
+
+\captionsetup[lstlisting]{
+	position=top,
+    font={normalsize},
+    labelfont={it},
+    textfont={it},
+    justification=raggedright,
+    singlelinecheck=false,
+    skip=3pt,
+}
+
+% The float package provides an H command
+% that allows you to place the image exactly where you specified it
+\usepackage{float}
+
+% for non-end-to-end numbering
+\usepackage{chngcntr}
+%\counterwithin{figure}{section}
+%\counterwithin{table}{section}
+
+% for long table
+\usepackage{longtable}
+\AtBeginEnvironment{longtable}{
+	\singlespacing
+	\fontsize{12pt}{14pt}\selectfont
+}
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\usepackage{multirow}
+
+% for graphics
+\usepackage{graphicx}
+
+\usepackage{tikz}  % powerful graphic creation
+\usetikzlibrary{shapes, arrows, positioning, backgrounds}
+
+\usepackage{amsmath} % more flexibility equations (use in title!!!)
+\usepackage{pdfpages} % include pdf
+
+% listings
+\usepackage{listings}
+\lstset{
+	basicstyle=\ttfamily\footnotesize\linespread{1}\selectfont,
+	% Caption
+	captionpos=t,
+	% Colors
+	backgroundcolor=\color{white},
+	rulecolor=\color{black},
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{ao(english)},
+	% Frame
+	frame=single,
+	framerule=0.5pt,
+	% Breaks
+    breaklines=true, % Allow automatic hyphenation of long lines
+    breakatwhitespace=true, % Transfer by whitespace only
+	breakautoindent=true, % Preserve indentation during line breaks
+	% Numbering
+	%numbers=left,
+	%numberstyle=\tiny\color{gray},
+	%stepnumber=1,
+	%numbersep=10pt,
+	% Column Settings
+	columns=fullflexible,
+	% Tabulation
+    tabsize=2,
+    keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	% Additional
+	extendedchars=true, % Allow extended characters (for UTF-8)
+}
+
+% ----------------------------------------------------------------------------
+% HYPERREF SETTINGS
+% ----------------------------------------------------------------------------
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=black,
+	citecolor=black,  % bibliography
+}
+\urlstyle{same}
+
+% ----------------------------------------------------------------------------
+% ENUMERATION SETTINGS
+% ----------------------------------------------------------------------------
+
+\usepackage{enumitem}
+\setlist{nosep}
+\setlist[itemize]{
+	leftmargin=0cm,
+	itemindent=1.25cm,
+	labelwidth=-0.6cm,
+	label=--,
+}
+
+\setlist[enumerate]{
+	leftmargin=0cm,
+	itemindent=1.25cm,
+	labelwidth=-0.65cm,
+	label*=\arabic*.,
+}
+
+\setlist[description]{
+	%style=nextline,
+	leftmargin=0cm,
+	itemindent=1.25cm,
+	labelwidth=-0.65cm
+}
+
+% ----------------------------------------------------------------------------
+% SECTION SETTINGS
+% ----------------------------------------------------------------------------
+
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{3}  % Set numbering to subsubsecton
+
+\titleformat{\chapter}[block]
+  {\bfseries\fontsize{18pt}{20pt}\selectfont} % Bold, size 18pt
+  {\thechapter}{1em}{\MakeTextUppercase} % numbering, indentation and uppercase 
+  %[\vspace{10pt}] % interval after the title
+\titleformat{\section}[block]
+  {\bfseries\fontsize{16pt}{18pt}\selectfont} % Bold, size 16pt
+  {\thesection}{1em}{}
+\titleformat{\subsection}[block]
+  {\bfseries}
+  {\thesubsection}{1em}{}
+\titleformat{\subsubsection}[block]
+  {\bfseries}
+  {\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[block]
+  {\bfseries}
+  {\thesubsubsection}{1em}{}
+
+% Customizing indents and spacing
+\titlespacing*{\chapter}
+  {\parindent}{-25pt}{10pt}
+  % Left indent 1.25 cm, spacing before 15pt, after 10pt
+\titlespacing*{\section}
+  {\parindent}{15pt}{10pt}
+\titlespacing*{\subsection}
+  {\parindent}{15pt}{10pt}
+\titlespacing*{\subsubsection}
+  {\parindent}{15pt}{10pt}
+\titlespacing*{\paragraph}
+  {\parindent}{15pt}{10pt}
+
+% Header separator on a new page.
+% Each new CHAPTER starts on a new page.
+\preto\chapter{\clearpage}
+
+\usepackage{needspace} % preventing gap between heading and next paragraph
+% Prevent title and text breaks
+% Do not break off the title from the following text
+\preto\chapter{\needspace{1\baselineskip}}
+\preto\section{\needspace{1\baselineskip}}
+\preto\subsection{\needspace{1\baselineskip}}
+\preto\subsubsection{\needspace{1\baselineskip}}
+
+\makeatletter
+\patchcmd{\paragraph}{\@afterindentfalse}{\@afterindentfalse\vspace*{-\parskip}}{}{}
+\makeatother
+
+% ----------------------------------------------------------------------------
+% TABLE OF CONTENTS
+% ----------------------------------------------------------------------------
+
+\usepackage{tocloft}
+
+%\renewcommand{\cfttoctitlefont}
+	%{\bfseries\fontsize{18pt}{20pt}\selectfont\MakeTextUppercase}
+\renewcommand{\cfttoctitlefont}{%
+	\hspace*{1.25cm}%  \parindent
+	\bfseries\fontsize{18pt}{20pt}\selectfont\MakeTextUppercase%
+}
+\renewcommand{\cftaftertoctitle}{}
+
+\setlength{\cftchapindent}{0em}
+\setlength{\cftsecindent}{1em}
+\setlength{\cftsubsecindent}{2em}
+\setlength{\cftsubsubsecindent}{3em}
+
+\setlength{\cftbeforetoctitleskip}{-20pt}
+\setlength{\cftaftertoctitleskip}{12pt}
+\renewcommand{\cftbeforechapskip}{0pt}
+\renewcommand{\cftbeforesecskip}{0pt}
+\renewcommand{\cftbeforesubsecskip}{0pt}
+%\setlength{\cftparskip}{0pt}
+
+%\renewcommand{\cftdot}{-}
+\renewcommand{\cftdotsep}{0.5}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\cftsetpnumwidth{1em}
+
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+
+% ----------------------------------------------------------------------------
+% GLOSSARIES
+% ----------------------------------------------------------------------------
+
+\usepackage[
+	xindy={language=russian,codepage=utf8},
+	acronym,
+	toc,
+	nonumberlist,
+	translate=babel
+]{glossaries}
+
+\newglossarystyle{glsstyle}{
+	\setglossarystyle{list}
+	\renewcommand*{\glossentry}[2]{%
+		\item[\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}]%
+		\ifglshaslong{##1}{(\glsentrylong{##1})}{} ---
+		\glossentrydesc{##1}\glspostdescription\space ##2%
+	}
+}
+
+% ----------------------------------------------------------------------------
+% BIBLIOGRAPHY
+%
+% Install in Linux
+% exec				mkdir -p ~/texmf/tex/latex
+% load archive from	https://www.ctan.org/pkg/biblatex-gost
+% unzip to			~/texmf/tex/latex/<biblatex-gost>
+% exec				texhash ~/texmf
+% 
+% ----------------------------------------------------------------------------
+
+\usepackage[
+	parentracker=true,
+	backend=biber,
+	%hyperref=true,  % defualt=auto
+	bibencoding=utf8,
+	style=gost-numeric,
+	language=auto,
+	autolang=other,
+	%citestyle=gost-numeric,
+	%bibstyle=gost-numeric,
+	sorting=none,  % entries are processed in citation order
+	]{biblatex}
+\renewcommand*{\multicitedelim}{,\space}
+\defbibenvironment{bibliography}{\enumerate}{\endenumerate}{\item}
+
+% ----------------------------------------------------------------------------
+% NEW COMMAND
+% ----------------------------------------------------------------------------
+
+% text substitutions
+\newcommand{\conttable}[1]{\caption*{\leftline{Продолжение Таблицы~\ref{#1}}}}
+\newcommand{\rref}[1]{(Рисунок~\ref{#1})}
+\newcommand{\rdref}[2]{(Рисунки~\ref{#1}\,-\,\ref{#2})}
+\newcommand{\tref}[1]{(Таблица~\ref{#1})}
+\newcommand{\tdref}[2]{(Таблици~\ref{#1}\,-\,\ref{#2})}
+\newcommand{\lref}[1]{(Листинг~\ref{#1})}
+\newcommand{\ldref}[2]{(Листинги~\ref{#1}\,-\,\ref{#2})}
+\newcommand{\eref}[1]{(Формула~\ref{#1})}
+\newcommand{\edref}[2]{(Формулы~\ref{#1}\,-\,\ref{#2})}
+\newcommand{\sref}[1]{(Раздел~\ref{#1})}
+\newcommand{\sdref}[2]{(Разделы~\ref{#1}\,-\,\ref{#2})}
+\newcommand{\cref}[1]{(Глава~\ref{#1})}
+\newcommand{\cdref}[2]{(Главы~\ref{#1}\,-\,\ref{#2})}
+
+% figure environment and command
+%\begin{figure}[h!tp]
+%\begin{figure}[H]
+\newenvironment{image}{
+	\begin{figure}[H]
+	\centering
+}{
+	\vspace*{-\dimexpr\intextsep}
+	\end{figure}
+}
+\newcommand\includegrph[2][width=0.8\textwidth]{\includegraphics[#1]{#2}}
+
+% appendix
+
+\usepackage{totcount}
+\newtotcounter{appendixcount}
+\newcommand{\appendixitem}[1]{
+	\stepcounter{appendixcount}
+    \appendixname~\ref{chap:#1}. #1 \par
+}
+
+\let\oldappendix\appendix % save old \appendix
+\usepackage{alphalph} % for \Asbuk
+\renewcommand{\appendix}{
+    \oldappendix
+    \renewcommand{\thechapter}{\Asbuk{chapter}}
+	\chapter*{Приложения}
+	\addcontentsline{toc}{chapter}{Приложения}
+	\titleformat{name=\chapter,numberless}[block]
+		{\bfseries\fontsize{18pt}{20pt}\selectfont\centering}{}{0pt}{}
+}
+\newcommand\achapter[1]{
+	\refstepcounter{chapter}
+	\chapter*{%
+		\MakeTextUppercase{\appendixname~\thechapter} \\%
+		\MakeTextUppercase{#1}%
+	}
+	\label{chap:#1}
+	\addcontentsline{toc}{section}{\appendixname~\thechapter\ ---\ #1}
+	%\addcontentsline{toc}{chapter}{\appendixname~\thechapter\ ---\ #1}
+}
+\newcommand\asection[1]{
+	\refstepcounter{section}
+    \renewcommand{\thechapter}{\arabic{chapter}}
+	\section*{\textbf{\thesection} \raggedright #1}
+    \renewcommand{\thechapter}{\Asbuk{chapter}}
+}
+\newcommand\asubsection[1]{
+	\refstepcounter{subsection}
+    \renewcommand{\thechapter}{\arabic{chapter}}
+	\subsection*{\textbf{\thesubsection} \raggedright #1}
+    \renewcommand{\thechapter}{\Asbuk{chapter}}
+}
+\newcommand\asubsubsection[1]{
+	\refstepcounter{subsubsection}
+    \renewcommand{\thechapter}{\arabic{chapter}}
+	\subsubsection*{\textbf{\thesubsubsection} \raggedright #1}
+    \renewcommand{\thechapter}{\Asbuk{chapter}}
+}
+
+% other commands
+\providecommand{\No}{\textnumero}
+\newcommand{\rarrow}{$\rightarrow$}
+

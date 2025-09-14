@@ -1,0 +1,33 @@
+\newglossaryentry{it}{
+    name={ИT}, 
+    description={информационные технологии}
+}
+
+\newglossaryentry{os}{
+    name={ОС},
+    description={операционная система}
+}
+
+\newglossaryentry{po}{
+    name={ПО},
+    description={программное обеспечение}
+}
+
+\newglossaryentry{json}{
+    name={JSON},
+    long={JavaScript Object Notation},
+    description={нотация объектов JavaScript}
+}
+
+\newglossaryentry{ui}{
+    name={UI},
+    long={User Interface},
+    description={пользовательский интерфейс}
+}
+
+\newglossaryentry{yaml}{
+    name={YAML},
+    long={YAML Ain't Markup Language},
+    description={формат сериализации данных}
+}
+

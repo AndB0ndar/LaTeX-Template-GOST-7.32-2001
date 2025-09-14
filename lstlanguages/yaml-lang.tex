@@ -1,0 +1,24 @@
+\usepackage{xcolor}
+
+\definecolor{yamlKey}{RGB}{0, 0, 180}
+\definecolor{yamlBool}{RGB}{150, 0, 90}
+\definecolor{yamlString}{RGB}{0, 100, 0}
+\definecolor{yamlNumber}{RGB}{180, 60, 0}
+\definecolor{yamlNull}{RGB}{120, 120, 120}
+
+\lstdefinelanguage{YAML}{
+    sensitive=true,
+    morekeywords={[1]true,false,True,False,yes,no,Yes,No},
+    morekeywords={[2]null,Null,NULL,~},
+    morecomment=[l]{\#},
+    morestring=[b]",
+    morestring=[b]',
+    alsoletter={:, -},
+    %moredelim=**[is][\color{yamlKey}]{\KEY}{:},
+    keywordstyle={[1]\color{yamlBool}\bfseries},
+    keywordstyle={[2]\color{yamlNull}\itshape},
+    stringstyle=\color{yamlString},
+    commentstyle=\color{gray}
+}
+
+%\newcommand{\KEY}{\color{yamlKey}\bfseries}
